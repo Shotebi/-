@@ -1,0 +1,71 @@
+import random
+
+digits = "0123456789"
+lowercase_letters = "abcdefghijklmnopqrstuvwxyz"
+uppercase_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+punctuation = "!#$%&*+-=?@^_."
+
+chars = []
+# количество паролей
+quantity = input("Введите количество паролей для генерации: ")
+if quantity.isdigit():
+    quantity = int(quantity)
+else:
+    print("Используй цифры")
+# длинна пароля
+length = input("Введите длину пароля ")
+if length.isdigit():
+    length = int(length)
+else:
+    print("Используй цифры")
+# цифры
+numbers = input("Использовать в генерации цифры ? ( Да/Нет ) ")
+if numbers.lower() == "да":
+    chars.append(digits)
+elif numbers.lower() == "нет":
+    print()
+else:
+    print("да или нет ?")
+# нижний регистр
+lowercase = input("Использовать в генерации буквы нижнего регистра ? ( Да/Нет ) ")
+if lowercase.lower() == "да":
+    chars.append(lowercase_letters)
+elif lowercase.lower() == "нет":
+    print()
+else:
+    print("да или нет ?")
+# верхний регистр
+uppercase = input("Использовать в генерации буквы верхнего регистра ? ( Да/Нет ) ")
+if uppercase.lower() == "да":
+    chars.append(uppercase_letters)
+elif uppercase.lower() == "нет":
+    print()
+else:
+    print("да или нет ?")
+# символы
+symbols = input("Использовать в генерации символы ? ( Да/Нет ) ")
+if symbols == "да":
+    chars.append(punctuation)
+elif symbols == "нет":
+    print()
+else:
+    print("да или нет ?")
+
+
+def generator(length1, cars1):
+    password = []
+    k = []
+    simvol = ""
+    for i in range(length1):
+        for i2 in cars1:
+            simvol += random.choice(i2)
+    simvol = random.sample(simvol, len(simvol))
+    simvol = ''.join(simvol)
+    simvol = simvol[0:int(length1)]
+
+    return simvol
+
+
+for _ in range(int(quantity)):
+    print(generator(length, chars))
+input("Закрыть программу 'enter'")
